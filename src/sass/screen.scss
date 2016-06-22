@@ -2085,7 +2085,7 @@ a {
 		color: $hover;
 	}
 }
-.solution, .sector {
+.solution, .sector, .industrypractice {
 	.double {
 		@include x-rem(margin-bottom, 40px);
 		padding-right: 2%;
@@ -2853,7 +2853,7 @@ a {
 	@include x-rem(margin, 0 0 30px 0);
 }
 .container {
-	&.news__inner, &.solution, &.sector {
+	&.news__inner, &.solution, &.sector, &.industrypractice {
 		p {
 			@include x-rem(margin, 0 0 25px 0);
 		}
