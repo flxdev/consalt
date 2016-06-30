@@ -75,6 +75,9 @@ button {
 a {
 	text-decoration: none;
 }
+::-ms-clear {
+    display: none;
+}
 #canvasGL {
 	canvas {
 		position: absolute;
@@ -371,7 +374,7 @@ a {
 		@include x-rem(font-size, 14px);
 		@include x-rem(margin, 14px 0 0);
 		color: $grey;
-		@include r(639) {
+		@include r(479) {
 			float: none;
 		}
 	}
@@ -393,7 +396,7 @@ a {
 				}
 			}
 		}
-		@include r(639) {
+		@include r(479) {
 			float: none;
 		}
 	}
@@ -403,7 +406,7 @@ a {
 			display: inline-block;
 		}
 	}
-	@include r(639) {
+	@include r(479) {
 		.scroll-top {
 			position: absolute;
 			@include x-rem(top, 16px);
@@ -1569,16 +1572,16 @@ a {
 		background: $hover;
 		content: "";
 		height: 100%;
-		left: 0;
+		left: -1px;
 		opacity: 0;
 		position: absolute;
 		top: 0;
 		transform: scale3d(0.7, 1, 1);
 		transition-delay: 0s, 0s;
-		transition-duration: 0.2s, 0.2s;
+		transition-duration: 0.4s, 0.4s;
 		transition-property: transform, opacity;
 		transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-		width: 100%;
+		width: 102%;
 		z-index: 0;
 		@include x-rem(border-radius, 22px);
 	}
@@ -1596,7 +1599,7 @@ a {
 	&:hover {
 		&::before {
 			opacity: 1;
-			transform: scale3d(1.1, 1, 1);
+			transform: translate(0,0);
 		}
 		span {
 			color: $white;
@@ -1668,13 +1671,13 @@ a {
 			.nav {
 				display: inline-block;
 				width: 100%;
-				margin-bottom: 9%;
-				margin-top: 10%;
+				margin-bottom: 0;
+				margin-top: 4%;
 				@include r(735) {
-					margin-top: 20%;
+					margin-top: 11%;
 				}
 				@include r(639) {
-					margin-top: 25%;
+					margin-top: 20%;
 				}
 				@include r(479) {
 					margin-top: 20%;
@@ -1900,6 +1903,9 @@ a {
 		display: inline-block;
 		vertical-align: top;
 		width: 25%;
+		@include r(830) {
+			width: 28%;
+		}
 		@include r(735) {
 			width: 100%;
 			margin: 0 0 3% 0;
@@ -1937,6 +1943,9 @@ a {
 			overflow: visible;
 			float: right;
 			width: 75%;
+			@include r(830) {
+				width: 72%;
+			}
 			@include r(735) {
 				width: 100%;
 				padding-left: 5%;
@@ -2700,6 +2709,7 @@ a {
 	a {
 		display: inline-block;
 		position: relative;
+		width: 100%;
 		z-index: 2;
 		&::after {
 			position: absolute;
@@ -2790,6 +2800,9 @@ a {
 		@include x-rem(margin-bottom, 30px);
 		margin-left: 0;
 		max-width: 95%;
+	}
+	@include r(479) {
+		max-width: 100%;
 	}
 	.pagin-arrow {
 		display: inline-block;
@@ -2935,7 +2948,7 @@ a {
 	.business {
 		margin: 0;
 		.business-item {
-			width: 21.5%;
+			width: 24.5%;
 			padding-bottom: 0;
 			@include r(735) {
 				width: 30%;
@@ -3138,6 +3151,7 @@ a {
 			@include x-rem(width, 14px);
 			@include x-rem(height, 24px);
 			background-image: url(../img/icons/clip.png);
+			background-repeat: no-repeat;
 			background-size: contain;
 			position: absolute;
 			top: 0;
@@ -3162,12 +3176,14 @@ a {
 	}
 	.dz-preview {
 		padding: 0;
-		display: inline;
+		display: none;
+		&.dz-error {
+			display: inline;
+		}
 		.dz-error-message {
-			left: 50%;
-			transform: translate(-50%);
+			@include x-rem(left, 0);
 			opacity: 1;
-			@include x-rem(top, 80px);
+			@include x-rem(top, 0);
 			padding: 0;
 			span {
 				font-family: $Book;
@@ -3182,8 +3198,8 @@ a {
 				@include x-rem(width, 10px);
 				@include x-rem(height, 10px);
 				background-size: cover;
-				@include x-rem(top, 68px);
-				@include x-rem(right, -85px);
+				@include x-rem(top, 5px);
+				@include x-rem(right, -135px);
 				text-indent: -999999px;
 			}
 		}
@@ -3199,6 +3215,7 @@ a {
 			&::after {
 				background-image: url(../img/icons/clip-test.png);
 				left: 0;
+				background-repeat: no-repeat;
 			}
 			span {
 				color: $hover;
@@ -3443,8 +3460,10 @@ a {
 			}
 		}
 		.btn {
+			@include x-rem(max-width, 177px);
+			width: 100%;
 			span {
-				@include x-rem(padding, 0 30px);
+				@include x-rem(padding, 0 31px);
 			}
 		}
 	}
@@ -3512,6 +3531,14 @@ a {
 .test {
 	@include x-rem(max-width, 733px);
 	@include x-rem(margin-bottom, 80px);
+	.ajax-loader {
+		hr {
+			background-color: #ccc;
+			height: 1px;
+			@include x-rem(margin, 10px 0 20px);
+			border: none;
+		}
+	}
 	.field__row {
 		font-size: 0;
 		position: relative;
@@ -3534,6 +3561,13 @@ a {
 				@include x-rem(padding-left, 20px);
 				@include r(560) {
 					padding-left: 0;
+				}
+			}
+			&.lang__ajax {
+				.ms-parent {
+					&:not(:first-of-type) {
+						@include x-rem(margin-top, 20px);
+					}
 				}
 			}
 			.field__title {
@@ -3569,6 +3603,12 @@ a {
 						@include x-rem(top, 12px);
 						background-image: url(../img//icons/picker.png);
 						background-size: cover;
+					}
+				}
+				&.has-error {
+					.ms-choice {
+						background-color: $bgError;
+						color: $txtError;
 					}
 				}
 			}
@@ -3625,6 +3665,9 @@ a {
 			color: $hover;
 			position: relative;
 			@include x-rem(top, 30px);
+			@include r(560) {
+				top: 0;
+			}
 			&.absolute {
 				position: relative;
 				float: right;
@@ -3668,6 +3711,11 @@ a {
 				}
 			}
 		}
+	}
+}
+.ie {
+	textarea {
+		overflow: auto!important;
 	}
 }
 .popup__wrap {
@@ -3774,6 +3822,7 @@ a {
 			border: 1px solid $lgrey;
 			@include x-rem(margin-right, 20px);
 			transition: border-color 0.3s ease-in-out;
+			overflow: hidden;
 			&:hover {
 				border-color: $hover;
 			}

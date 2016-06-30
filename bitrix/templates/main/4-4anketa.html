@@ -629,7 +629,7 @@
 												<span>На какую вакансию вы претендуете?<sup>*</sup></span>
 											</div>
 											<div class="field__body">
-												<select class="select" multiple="multiple" placeholder="Выберите из списка">
+												<select class="select validation" multiple="multiple" placeholder="Выберите из списка">
 													<option value="Менеджер по продажам">Менеджер по продажам</option>
 													<option value="Товаровед">Товаровед</option>
 													<option value="Аккаунт менеджер">Аккаунт менеджер</option>
@@ -695,7 +695,7 @@
 												<span>E-mail<sup>*</sup></span>
 											</div>
 											<div class="field__body">
-												<input type="text" data-validation="mail">
+												<input type="text" data-validation="email">
 											</div>
 										</div>
 									</div>
@@ -1003,33 +1003,33 @@
 											</div>
 										</div>
 									</div>
-									<div class="ajax-loader">
-										<div class="ajax-container">
-											<div class="field__row field__row-100">
-												<div class="field">
-													<div class="field__title">
-														<span>Может ли кто-нибудь дать Вам рекомендацию (руководители, деловые партнеры)?</span>
-													</div>
-													<div class="field__body">
-														<div class="field__body-row">
-															<div class="check">
-																<div class="check-item">
-																	<input id="recommendation1" type="radio" name="recommendation">
-																	<label for="recommendation1">
-																		<span>Да</span>
-																	</label>
-																</div>
-																<div class="check-item">
-																	<input id="recommendation2" type="radio" name="recommendation">
-																	<label for="recommendation2">
-																		<span>Нет</span>
-																	</label>
-																</div>
-															</div>
+									<div class="field__row field__row-100">
+										<div class="field">
+											<div class="field__title">
+												<span>Может ли кто-нибудь дать Вам рекомендацию (руководители, деловые партнеры)?</span>
+											</div>
+											<div class="field__body">
+												<div class="field__body-row">
+													<div class="check">
+														<div class="check-item">
+															<input id="recommendation1" type="radio" name="recommendation">
+															<label for="recommendation1">
+																<span>Да</span>
+															</label>
+														</div>
+														<div class="check-item">
+															<input id="recommendation2" type="radio" name="recommendation">
+															<label for="recommendation2">
+																<span>Нет</span>
+															</label>
 														</div>
 													</div>
 												</div>
 											</div>
+										</div>
+									</div>
+									<div class="ajax-loader">
+										<div class="ajax-container">
 											<div class="field__row field__row-33">
 												<div class="field">
 													<div class="field__title">
@@ -1340,7 +1340,7 @@
 					</div>
 					<div class="field">
 						<div class="field__body">
-							<input type="text" placeholder="Телефон*" data-validation="length" data-validation-length="4-19">
+							<input type="text" placeholder="Телефон*" data-validation="length" data-validation-length="4-19" class="chars">
 						</div>
 					</div>
 					<div class="field">

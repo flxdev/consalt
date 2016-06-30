@@ -87,14 +87,23 @@ $(document).ready(function () {
 			if(!$(this).hasClass('mobile')) {
 				$.fn.fullpage.moveTo(1);
 			} else {
-				scrolls();
+				$('html, body').animate({
+					scrollTop: 0
+				}, 850);
 			};
-		})
+
+			if(!$('.fullpage').length){
+				$('html, body').animate({
+					scrollTop: 0
+				}, 850);
+			}
+		});
+
 	} moveSlideUp();
 
 	function scrolls() {
 		var sTop = $('.scroll-top');
-
+		sTop.addClass('mobile');
 		sTop.on('click', function() {
 			$('html, body').animate({
 				scrollTop: 0
@@ -421,8 +430,13 @@ $(document).ready(function () {
 					form : form_this,
 					borderColorOnError : true,
 					scrollToTopOnError : false,
+					onError: function($form){
+						validPick($form);
+						validSelect($form);
+					},
 					onValid: function($form){
 						validPick($form);
+						validSelect($form);
 					},
 					onSuccess: function($form){
 						valid($form);
@@ -433,8 +447,23 @@ $(document).ready(function () {
 		};
 	} validator();
 
+	function validSelect(form) {
+		var select = $(form).find('.ms-parent.validation');
+
+		select.each(function(){
+			var check = $(this).find('li.selected');
+			console.log(check.length)
+			if(check.length === 0) {
+				$(this).addClass('error').parent().addClass('has-error');
+			} else {
+				$(this).removeClass('error').addClass('success');
+				$(this).parent().removeClass('has-error').addClass('has-success');
+			}
+		});
+	};
+
 	function validPick(form){
-		var pick = $(form);
+		var pick = $(form).find('.picker');
 		pick.each(function(){
 			var val = $(this).val();
 			if(val === ''){
@@ -491,10 +520,14 @@ $(document).ready(function () {
 					$input.parent().removeClass('has-error').addClass('has-success');
 				}
 			}
-		})
+		});
+		$('.datePicker').on('click', function(){
+			$(this).children().focus()
+		});
 	}
 	if($('.picker').length) {
 		picker();
+
 	}
 
 	//select
@@ -546,6 +579,15 @@ $(document).ready(function () {
 	// function autoSize() {
 		autosize($('.size'));
 	//} autosize();
+	
+	function chars() {
+		$('.chars').on('keypress', function(key){
+			if((key.charCode < 40 || key.charCode > 41) && (key.charCode < 48 || key.charCode > 57) && (key.charCode != 45) && (key.charCode != 32) && (key.charCode != 43) && (key.charCode != 0))
+				return false;
+		});
+
+	} chars();
+
 });
 $(window).on('load', function(){
 	function hash() {
