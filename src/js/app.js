@@ -2,6 +2,8 @@ $(document).ready(function () {
 
 	$("img, a").on("dragstart", function(event) { event.preventDefault(); });
 	
+	$('input, textarea').placeholder();
+	
 	//detected mobile an init fullpage slider
 	if(!head.mobile) {
 		initFullpage();
@@ -359,7 +361,7 @@ $(document).ready(function () {
 				}
 			});
 
-		innerSelector.on('click', function(event){
+		innerSelector.add($('.popup__layer')).on('click', function(event){
 			event.stopPropagation();
 		});
 

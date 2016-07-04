@@ -8,7 +8,11 @@ html {
 	font-size: 16px;
 	&.hidden {
 		body {
-			overflow: hidden;
+			overflow-y: scroll;
+			.viewport {
+				height: 100vh;
+				overflow: hidden;
+			}
 		}
 	}
 	@include r(1599) {
@@ -83,14 +87,21 @@ a {
 		position: absolute;
 		bottom: -20%;
 		left: 0;
-		width: 94%!important;
-		@include r(980){
-			width: 200%!important;
-		}
-		@include r(735){
-			width: 135%!important;
+		// width: 94%!important;
+		// @include r(980){
+		// 	width: 200%!important;
+		// }
+		// @include r(735){
+		// 	width: 135%!important;
 			
-			height: 100%!important;
+		// 	height: 100%!important;
+		// }
+	}
+}
+#experience {
+	&.inner {
+		@include r(980) {
+			display: none;
 		}
 	}
 }
@@ -275,6 +286,7 @@ a {
 .viewport-right {
 	width: 70%;
 	float: right;
+	overflow: hidden;
 	.header {
 		padding-left: 9.82%;
 		padding-right: 12.82%;
@@ -367,6 +379,7 @@ a {
 	@include r(639) {
 		text-align: center;
 		@include x-rem(padding-top, 72px);
+		@include x-rem(padding-bottom, 72px);
 	}
 	.copyright {
 		float: left;
@@ -749,12 +762,12 @@ a {
 		&::after {
 			display: none;
 		}
-		#canvasGL {
-			canvas {
-				width: 184%!important;
-				bottom: -35%;
-			}
-		}
+		// #canvasGL {
+		// 	canvas {
+		// 		width: 184%!important;
+		// 		bottom: -35%;
+		// 	}
+		// }
 	}
 }
 .scroll {
@@ -826,9 +839,13 @@ a {
 	&:hover {
 		a {
 			span {
-				@include x-rem(width, 6px);
-				@include x-rem(height, 6px);
+				// @include x-rem(width, 6px);
+				// @include x-rem(height, 6px);
+				width: 6px;
+				height: 6px;
+				margin: -3px 0 0 -3px;
 				@include x-rem(margin, -3px 0 0 -3px);
+				display: block;
 			}
 		}
 	}
@@ -852,9 +869,13 @@ a {
 		span {
 			background-color: $grey;
 			transition: background-color 0.5s ease;
-			@include x-rem(width, 6px);
-			@include x-rem(height, 6px);
-			@include x-rem(margin, -3px 0 0 -3px);
+			// @include x-rem(width, 6px);
+			// @include x-rem(height, 6px);
+			// @include x-rem(margin, -3px 0 0 -3px);
+			width: 6px;
+			height: 6px;
+			margin: -3px 0 0 -3px;
+			display: block;
 		}
 		&.active {
 			&::after {
@@ -863,9 +884,13 @@ a {
 		}
 		&:hover, &.active {
 			span {
-				@include x-rem(width, 6px);
-				@include x-rem(height, 6px);
-				@include x-rem(margin, -3px 0 0 -3px);
+				// @include x-rem(width, 6px);
+				// @include x-rem(height, 6px);
+				// @include x-rem(margin, -3px 0 0 -3px);
+				width: 6px;
+				height: 6px;
+				margin: -3px 0 0 -3px;
+				display: block;
 			}
 		}
 		&:hover {
@@ -1533,6 +1558,7 @@ a {
 			float: none;
 			width: 100%;
 			margin-left: 0;
+			margin-bottom: 10%;
 		}
 	}
 	.career-title {
@@ -1568,22 +1594,55 @@ a {
 	position: relative;
 	overflow: hidden;
 	z-index: 3;
+	@include r(1600) {
+		@include x-rem(height, 42.5px);
+	}
+	// &::before {
+	// 	background: $hover;
+	// 	content: "";
+	// 	height: 100%;
+	// 	left: -1px;
+	// 	opacity: 0;
+	// 	position: absolute;
+	// 	top: 0;
+	// 	transform: scale3d(0.7, 1, 1);
+	// 	transition-delay: 0s, 0s;
+	// 	transition-duration: 0.4s, 0.4s;
+	// 	transition-property: transform, opacity;
+	// 	transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+	// 	width: 102%;
+	// 	z-index: 0;
+	// 	@include x-rem(border-radius, 22px);
+	// }
 	&::before {
-		background: $hover;
+		background-color: #0f6cb6;
 		content: "";
 		height: 100%;
-		left: -1px;
+		left: 50%;
 		opacity: 0;
 		position: absolute;
+		transition: width 0.3s ease 0s, opacity 0.3s ease;
+		width: 20%;
+		z-index: -1;
 		top: 0;
-		transform: scale3d(0.7, 1, 1);
-		transition-delay: 0s, 0s;
-		transition-duration: 0.4s, 0.4s;
-		transition-property: transform, opacity;
-		transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-		width: 102%;
-		z-index: 0;
-		@include x-rem(border-radius, 22px);
+		@include x-rem(border-top-right-radius, 22px);
+		@include x-rem(border-bottom-right-radius, 22px);
+		will-change: opacity;
+	}
+	&::after {
+		background-color: #0f6cb6;
+		content: "";
+		height: 100%;
+		opacity: 0;
+		position: absolute;
+		right: 50%;
+		transition: width 0.3s ease 0s, opacity 0.3s ease;
+		width: 20%;
+		z-index: -1;
+		top: 0;
+		@include x-rem(border-top-left-radius, 22px);
+		@include x-rem(border-bottom-left-radius, 22px);
+		will-change: opacity;
 	}
 	span {
 		font-family: $Demi;
@@ -1592,14 +1651,17 @@ a {
 		color: $grey;
 		@include x-rem(letter-spacing, 1.2px);
 		@include x-rem(padding, 0 58px);
+		display: block;
 		transition: color 0.2s cubic-bezier(0.2, 1, 0.3, 1);
 		position: relative;
 		z-index: 1;
 	}
 	&:hover {
-		&::before {
+		&::before, &::after {
 			opacity: 1;
-			transform: translate(0,0);
+			width: 52%;
+			// opacity: 1;
+			// transform: translate(0,0);
 		}
 		span {
 			color: $white;
@@ -1646,7 +1708,7 @@ a {
 		float: left;
 		height: 100%;
 		background-color: $white;
-		@include x-rem(padding-top, 80px);
+		@include x-rem(padding, 80px 0 65px);
 		transform: translateX(100%);
 		transition: transform 0.15s cubic-bezier(.89,.42,1,1);
 		@include r(1365) {
@@ -1667,7 +1729,8 @@ a {
 		}
 		@include r(980) {
 			width: 100%;
-			padding-left: 0;
+			min-height: 100%;
+			height: auto;
 			.nav {
 				display: inline-block;
 				width: 100%;
@@ -1718,6 +1781,7 @@ a {
 			bottom: 4%;
 		}
 		@include r(980) {
+			bottom: 4%;
 			.social-item {
 				margin-left: 5%;
 			}
@@ -1850,6 +1914,9 @@ a {
 		position: relative;
 		&:not(:last-child) {
 			margin-right: 4%;
+			@include r(980) {
+				@include x-rem(margin-right, 35px);
+			}
 		}
 		&::after {
 			content: '/';
@@ -1884,6 +1951,13 @@ a {
 		&.lead {
 			font-family: $Demi;
 			padding-right: 1%;
+		}
+	}
+	&.about {
+		.double {
+			.double__item > img {
+				max-width: 100%;
+			}
 		}
 	}
 }
@@ -2070,6 +2144,7 @@ a {
 		@include x-rem(font-size, 19px);
 		color: $grey;
 		@include x-rem(line-height, 19px);
+		margin-bottom: 5px;
 	}
 	.author__position {
 		font-family: $Book;
@@ -3249,7 +3324,7 @@ a {
 			top: 0;
 			right: 0;
 			height: 100%;
-			width: 50%;
+			width: 50.2%;
 			background-color: $grey;
 			transform: translateY(-100%);
 			transition: transform 0.3s cubic-bezier(.89,.42,1,1);
@@ -3261,7 +3336,7 @@ a {
 			top: 0;
 			left: 0;
 			height: 100%;
-			width: 50%;
+			width: 50.2%;
 			background-color: $grey;
 			transform: translateY(100%);
 			transition: transform 0.3s cubic-bezier(.89,.42,1,1);
@@ -3460,8 +3535,11 @@ a {
 			}
 		}
 		.btn {
-			@include x-rem(max-width, 177px);
-			width: 100%;
+			max-width: 179px;
+			@include r(735) {
+				max-width: 100%;
+				width: auto;
+			}
 			span {
 				@include x-rem(padding, 0 31px);
 			}
@@ -4310,23 +4388,31 @@ a {
 		cursor: pointer;
 		&::after {
 			content: '';
-			@include x-rem(width, 18px);
-			@include x-rem(height, 18px);
+			// @include x-rem(width, 18px);
+			// @include x-rem(height, 18px);
+			width: 18px;
+			height: 18px;
 			border-radius: 100%;
 			border: 1px solid $hover;
 			position: absolute;
-			@include x-rem(left, 0);
-			@include x-rem(top, 5px);
+			// @include x-rem(left, 0);
+			// @include x-rem(top, 5px);
+			left: 0;
+			top: 5px;
 		}
 		&::before {
 			content: '';
-			@include x-rem(width, 10px);
-			@include x-rem(height, 10px);
+			// @include x-rem(width, 10px);
+			// @include x-rem(height, 10px);
+			width: 10px;
+			height: 10px;
 			border-radius: 100%;
 			background-color: $hover;
 			position: absolute;
-			@include x-rem(left, 4px);
-			@include x-rem(top, 9px);
+			// @include x-rem(left, 4px);
+			// @include x-rem(top, 9px);
+			left: 4px;
+			top: 9px;
 			opacity: 0;
 			visibility: hidden;
 			transform: scale(0.5);

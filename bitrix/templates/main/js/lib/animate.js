@@ -110,7 +110,7 @@ $(document).ready(function(){
           sombrero_amplitude: 0.6,
           sombrero_frequency: 10.0,
           speed: speeds,
-          segments: 324,
+          segments: 200,
           wireframe_color: '#0f6cb6',
           perlin_passes: 0,
           wireframe: true,

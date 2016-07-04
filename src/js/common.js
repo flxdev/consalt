@@ -10,5 +10,6 @@
 //= lib/jquery.datetimepicker.min.js
 //= lib/multiple-select.js
 //= lib/autosize.min.js
-//= lib/animate.js
+//= lib/placeholders.js
 //= app.js
+//= lib/animate.js
