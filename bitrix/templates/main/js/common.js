@@ -1506,8 +1506,10 @@ $(document).ready(function(){
     var speeds;
     if($('#experience').hasClass('inner')) {
       speeds = 0;
+      wave = 5.0;
     } else {
       speeds = 0.4;
+      wave = 10.0;
     }
     (function() {
       var App,
@@ -1611,10 +1613,10 @@ $(document).ready(function(){
           elevation: 1,
           noise_range: 2.14,
           sombrero_amplitude: 0.6,
-          sombrero_frequency: 10.0,
+          sombrero_frequency: wave,
           speed: speeds,
           segments: 200,
-          wireframe_color: '#0f6cb6',
+          wireframe_color: '#80c3f8',
           perlin_passes: 0,
           wireframe: true,
           floor_visible: true
@@ -1708,12 +1710,25 @@ $(document).ready(function(){
 
         return Terrain;
 
+         $(window).on('resize', function(){
+          Terrain.update();
+        });
+
       })();
 
       App = new window.App();
 
       App.init();
 
+      $(window).on('resize', function(){
+        App.resize();
+        App.renderScene();
+        App.update();
+        App.init();
+      });
+
     }).call(this);
+  
+
   };
 });

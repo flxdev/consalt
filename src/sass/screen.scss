@@ -3892,8 +3892,21 @@ a {
 		color: $grey;
 		@include x-rem(margin-bottom, 20px);
 		position: relative;
+		.popup__img {
+			color: $blue;
+		}
 	}
 	.review__author {
+		.review__img {
+			@include x-rem(width, 80px);
+			float: left;
+			overflow: hidden;
+			border-radius: 100%;
+			@include x-rem(margin-right, 20px);
+			img {
+				max-width: 100%;
+			}
+		}
 		.popup__img {
 			width: 15%;
 			float: left;
