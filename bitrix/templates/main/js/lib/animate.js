@@ -69,7 +69,7 @@ $(document).ready(function(){
           this.container.id = 'canvasGL';
           this.container.appendChild(this.renderer.domElement);
           this.camera.lookAt(new THREE.Vector3());
-          document.getElementById('experience').appendChild(this.container);
+          document.getElementById('experience').appendChild(this.container);        
           this.terrain = new Terrain(this.scene);
           this.scene.add(this.terrain.plane_mesh);
           return this.update();
@@ -89,6 +89,9 @@ $(document).ready(function(){
           this.camera.aspect = stageWidth / stageHeight;
           this.camera.updateProjectionMatrix();
           return this.renderer.setSize(stageWidth, stageHeight);
+          $(window).on('resize', function(){
+          renderer.setSize(window.innerWidth, window.innerHeight);
+        });
         };
 
         return App;
@@ -218,10 +221,7 @@ $(document).ready(function(){
       App.init();
 
       $(window).on('resize', function(){
-        App.resize();
-        App.renderScene();
-        App.update();
-        App.init();
+        App.resize(window.innerWidth, window.innerHeight);
       });
 
     }).call(this);

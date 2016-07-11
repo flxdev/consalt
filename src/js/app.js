@@ -5,11 +5,11 @@ $(document).ready(function () {
 	$('input, textarea').placeholder();
 	
 	//detected mobile an init fullpage slider
-	if(!head.mobile) {
+	//if(!head.mobile) {
 		initFullpage();
-	} else {
+	//} else {
 		scrolls();
-	}
+	//}
 
 	function initFullpage() {
 		var fullpageSettings = {
@@ -382,14 +382,14 @@ $(document).ready(function () {
 	//google map
 	function maps(){
 		var map;
-		function initialize() {
+		/*function initialize() {
 			var stylez = [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#dde6e8"},{"visibility":"on"}]}];
 			var mapOptions = {
 				zoom: 14,
 				disableDefaultUI: true,
 				scrollwheel: false,
 				panControl: false,
-				zoomControl: false,
+				zoomControl: true,
 				zoomControlOptions: {
 					style: google.maps.ZoomControlStyle.SMALL,
 					position: google.maps.ControlPosition.RIGHT_CENTER
@@ -417,6 +417,24 @@ $(document).ready(function () {
 			var center = map.getCenter();
 			google.maps.event.trigger(map, "resize");
 			map.setCenter(center); 
+		});*/
+		ymaps.ready(function () {
+		var myMap = new ymaps.Map('map', {
+				center: [53.925248, 27.508166],
+				zoom: 17,
+				controls: ['zoomControl']
+			}),
+			myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
+				// hintContent: 'Собственный значок метки',
+				balloonContent: '220035, г. Минск, ул. Тимирязева, д. 67, 20 этаж.'
+			}, {
+				iconLayout: 'default#image',
+				iconImageHref: 'img/icons/baloon.png',
+				iconImageSize: [30, 42],
+				iconImageOffset: [-3, -42]
+			});
+
+			myMap.geoObjects.add(myPlacemark);
 		});
 	} if($('#map').length) {
 		maps();

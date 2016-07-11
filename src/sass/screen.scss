@@ -7,11 +7,37 @@ html {
 	height: 100%;
 	font-size: 16px;
 	&.hidden {
+		&.ff, &.chrome, &.ie {
+			body {
+				// padding-right: 17px;
+				@include r(980) {
+					padding-right: 0;
+				}
+			}
+			.viewport-left {
+				width: 29.75%;
+				@include r(980) {
+					width: 100%;
+				}
+			}
+		}
 		body {
-			overflow-y: scroll;
+			overflow: hidden!important;
 			.viewport {
-				height: 100vh;
-				overflow: hidden;
+				margin-right: 17px;
+				//overflow: hidden;
+				@include r(980) {
+					margin-right: 0;
+				}
+			}
+			&.index {
+				.viewport {
+					margin-right: 0;
+					//overflow: hidden;
+					@include r(980) {
+						margin-right: 0;
+					}
+				}
 			}
 		}
 	}
@@ -39,6 +65,9 @@ body {
 	height: 100%;
 	background-color: $white;
 	min-width: 320px;
+}
+.viewport {
+	min-height: 100%;
 }
 strong {
 	font-family: $Medium;
@@ -295,6 +324,30 @@ a {
 			padding-left: 5.2%;
 		}
 	}
+	.out {
+		min-height: calc(100vh - 12.2rem);
+		@include r(1365) {
+			min-height: calc(100vh - 7.8rem);
+		}
+		@include r(980) {
+			min-height: calc(100vh - 29.2rem);
+		}
+		@include r(735) {
+			min-height: calc(100vh - 26.4rem);
+		}
+		@include r(639) {
+			min-height: calc(100vh - 30.4rem);
+		}
+		@include r(540) {
+			min-height: calc(100vh - 33rem);
+		}
+		@include r(479) {
+			min-height: calc(100vh - 34rem);
+		}
+		@include r(375) {
+			min-height: calc(100vh - 32.2rem);
+		}
+	}
 	@include r(980) {
 		background-color: $white;
 		float: none;
@@ -467,6 +520,7 @@ a {
 		@include r(639) {
 			text-align: center;
 			@include x-rem(padding-top, 120px);
+			@include x-rem(padding-bottom, 72px);
 		}
 		&.show {
 			transform: translateY(0);
@@ -709,13 +763,13 @@ a {
 .index {
 	.out {
 		width: 100%;
-		height: 100vh;
-		overflow: hidden;
+		// height: 100vh;
+		// overflow: hidden;
 		position: relative;
 		z-index: 2;
 		@include r(980) {
-			overflow: visible;
-			height: 100%;
+			// overflow: visible;
+			// height: 100%;
 		}
 	}
 }
@@ -797,6 +851,8 @@ a {
 			width: 100%;
 			height: 100%;
 			display: block;
+			transform: rotate(-180deg);
+			transform-origin: 50%;
 			path {
 				fill: $grey;
 				transition: fill 0.3s ease-in-out;
@@ -903,7 +959,7 @@ a {
 .index {
 	.news {
 		position: absolute;
-		@include x-rem(bottom, 60px);
+		@include x-rem(bottom, 68px);
 		left: 9.5%;
 		// width: 22%;
 		@include x-rem(max-width, 390px);
@@ -912,7 +968,7 @@ a {
 			left: 4.375%;
 			// @include x-rem(max-width, 330px);
 			width: 100%;
-			@include x-rem(bottom, 20px);
+			//@include x-rem(bottom, 20px);
 		}
 		@include r(1279) {
 			left: 2.375%;
@@ -950,6 +1006,27 @@ a {
 				@include x-rem(font-size, 19px);
 				color: $grey;
 				display: inline-block;
+			}
+			.links {
+				display: inline-block;
+				width: auto;
+				@include x-rem(padding-right, 30px);
+				&::after {
+					background-color: transparent;
+					height: 0;
+				}
+				&::before {
+					@include x-rem(right, 0);
+					bottom: 0;
+				}
+				&:hover {
+					span {
+						color: $hover;
+					}
+					&::after {
+						background-color: transparent;
+					}
+				}
 			}
 		}
 	}
@@ -1073,6 +1150,9 @@ a {
 	@include r(1365) {
 		max-width: 80%;
 	}
+	@include r(1279) {
+		margin-top: 23%;
+	}
 	@include r(1150) {
 		max-width: 100%;
 	}
@@ -1141,6 +1221,9 @@ a {
 	margin-top: 13%;
 	font-size: 0;
 	margin-bottom: -3%;
+	@include r(1279) {
+		margin-top: 20%;
+	}
 	@include r(980) {
 		margin-top: 0;
 	}
@@ -1282,8 +1365,8 @@ a {
 }
 .clients {
 	margin: 7% 0 4%;
-	@include r(1365) {
-		margin: 1% 0 4%;
+	@include r(1279) {
+		margin: 13% 0 4%;
 	}
 	@include r(980) {
 		margin-top: 0;
@@ -1389,9 +1472,17 @@ a {
 		}
 	}
 }
+.container {
+	&.solutions {
+		margin-top: 0;
+	}
+}
 .solutions {
 	margin: 13% 0 -5%;
 	font-size: 0;
+	@include r(1279) {
+		margin-top: 20%;
+	} 
 	@include r(980) {
 		margin-top: 0;
 	}
@@ -1538,6 +1629,9 @@ a {
 }
 .career {
 	margin: 13% 0 0;
+	@include r(1279) {
+		margin-top: 20%;
+	}
 	@include r(980) {
 		margin-top: 0;
 	}
@@ -4285,6 +4379,11 @@ a {
 				@include r(479) {
 					display: none;
 				}
+			}
+		}
+		&.history__stages-item-red {
+			span {
+				background-color: $txtError;
 			}
 		}
 	}
