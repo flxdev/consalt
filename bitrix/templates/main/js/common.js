@@ -1125,6 +1125,8 @@ $(document).ready(function () {
 			animation: 'fade',
 			maxWidth: 330,
 			speed: 500,
+			contentCloning: true,
+			contentAsHTML: true,
 			functionInit: function(){
 				return $('#' + id).html();
 			},

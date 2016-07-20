@@ -763,7 +763,7 @@ a {
 .index {
 	.out {
 		width: 100%;
-		// height: 100vh;
+		height: 100vh;
 		// overflow: hidden;
 		position: relative;
 		z-index: 2;
@@ -1571,6 +1571,11 @@ a {
 		&.tips {
 			cursor: pointer;
 		}
+		.marked {
+			li {
+				@include x-rem(font-size, 12px);
+			}
+		}
 	}
 	.head {
 		position: relative;
@@ -1688,6 +1693,7 @@ a {
 	position: relative;
 	overflow: hidden;
 	z-index: 3;
+	transition: background-color 0s ease 0s;
 	@include r(1600) {
 		@include x-rem(height, 42.5px);
 	}
@@ -1708,34 +1714,49 @@ a {
 	// 	z-index: 0;
 	// 	@include x-rem(border-radius, 22px);
 	// }
+	// &::before {
+	// 	background-color: #0f6cb6;
+	// 	content: "";
+	// 	height: 100%;
+	// 	left: 50%;
+	// 	opacity: 0;
+	// 	position: absolute;
+	// 	transition: width 0.3s ease 0s, opacity 0.3s ease;
+	// 	width: 20%;
+	// 	z-index: -1;
+	// 	top: 0;
+	// 	@include x-rem(border-top-right-radius, 22px);
+	// 	@include x-rem(border-bottom-right-radius, 22px);
+	// 	will-change: opacity;
+	// }
+	// &::after {
+	// 	background-color: #0f6cb6;
+	// 	content: "";
+	// 	height: 100%;
+	// 	opacity: 0;
+	// 	position: absolute;
+	// 	right: 50%;
+	// 	transition: width 0.3s ease 0s, opacity 0.3s ease;
+	// 	width: 20%;
+	// 	z-index: -1;
+	// 	top: 0;
+	// 	@include x-rem(border-top-left-radius, 22px);
+	// 	@include x-rem(border-bottom-left-radius, 22px);
+	// 	will-change: opacity;
+	// }
 	&::before {
 		background-color: #0f6cb6;
 		content: "";
 		height: 100%;
-		left: 50%;
+		left: 0;
 		opacity: 0;
 		position: absolute;
-		transition: width 0.3s ease 0s, opacity 0.3s ease;
-		width: 20%;
+		transition: transform 0.3s ease 0s, opacity 0.3s ease;
+		transform: scale(0, 1);
+		width: 100%;
 		z-index: -1;
 		top: 0;
-		@include x-rem(border-top-right-radius, 22px);
-		@include x-rem(border-bottom-right-radius, 22px);
-		will-change: opacity;
-	}
-	&::after {
-		background-color: #0f6cb6;
-		content: "";
-		height: 100%;
-		opacity: 0;
-		position: absolute;
-		right: 50%;
-		transition: width 0.3s ease 0s, opacity 0.3s ease;
-		width: 20%;
-		z-index: -1;
-		top: 0;
-		@include x-rem(border-top-left-radius, 22px);
-		@include x-rem(border-bottom-left-radius, 22px);
+		@include x-rem(border-radius, 22px);
 		will-change: opacity;
 	}
 	span {
@@ -1751,12 +1772,18 @@ a {
 		z-index: 1;
 	}
 	&:hover {
-		&::before, &::after {
+		background-color: #0f6cb6;
+		transition: background-color 0.3s ease 0.1s;
+		&::before {
+			transform: scale(1.1,1);
 			opacity: 1;
-			width: 52%;
-			// opacity: 1;
-			// transform: translate(0,0);
 		}
+		// &::before, &::after {
+		// 	opacity: 1;
+		// 	width: 52%;
+		// 	// opacity: 1;
+		// 	// transform: translate(0,0);
+		// }
 		span {
 			color: $white;
 		}
@@ -1768,6 +1795,23 @@ a {
 		@include x-rem(margin-bottom, 80px);
 	}
 }
+// .ff {
+// 	.btn {
+// 		&::before {
+// 			left: 50%;
+// 			transition: width 0.3s ease 0s, opacity 0.3s ease 0s, left 0.3s ease 0.1s;
+// 		}
+// 		&::after{
+// 			right: 50%;
+// 		}
+// 		&:hover {
+// 			&::before {
+// 				left: 49.8%;
+// 				transition: width 0.3s ease 0s, opacity 0.3s ease 0s, left 0.3s ease;
+// 			}
+// 		}
+// 	}
+// }
 .menu-overlay {
 	position: fixed;
 	width: 100%;
@@ -4187,6 +4231,32 @@ a {
 	@include x-rem(font-size, 36px);
 	@include x-rem(margin-bottom, 36px);
 }
+.picture.ac_testing-field-q_picture {
+	img {
+		@include x-rem(margin-bottom, 40px);
+	}
+}
+.marked {
+	li {
+		font-family: $Book;
+		@include x-rem(font-size, 19px);
+		line-height: 1.45;
+		color: $grey;
+		@include x-rem(padding-left, 25px);
+		@include x-rem(margin-bottom, 15px);
+		position: relative;
+		&::before {
+			content: '';
+			@include x-rem(width, 5px);
+			@include x-rem(height, 5px);
+			background-color: $blue;
+			border-radius: 100%;
+			position: absolute;
+			@include x-rem(top, 12px);
+			left: 0;
+		}
+	}
+}
 .answer__area {
 	font-size: 0;
 	max-width: 90%;
@@ -4204,6 +4274,71 @@ a {
 			position: absolute;
 			opacity: 0;
 			visibility: hidden;
+			
+		}
+		input[type="radio"] {
+			& + label {
+				&::after {
+					content: '';
+					@include x-rem(width, 18px);
+					@include x-rem(height, 18px);
+					border-radius: 100%;
+					border: 1px solid $hover;
+					position: absolute;
+					@include x-rem(left, 5px);
+					@include x-rem(top, 5px);
+				}
+				&::before {
+					content: '';
+					@include x-rem(width, 10px);
+					@include x-rem(height, 10px);
+					border-radius: 100%;
+					background-color: $hover;
+					position: absolute;
+					@include x-rem(left, 9px);
+					@include x-rem(top, 9px);
+					opacity: 0;
+					visibility: hidden;
+					transform: scale(0.5);
+					transition: all 0.3s ease-in-out;
+				}
+			}
+			&:checked {
+				& + label {
+					background-color: $scroll;
+					&::before {
+						opacity: 1;
+						visibility: visible;
+						transform: scale(1);
+					}
+				}
+			}
+		}
+		input[type="checkbox"] {
+			& + label {
+				&::after {
+					content: '';
+					@include x-rem(width, 18px);
+					@include x-rem(height, 18px);
+					border: 1px solid $hover;
+					position: absolute;
+					@include x-rem(left, 5px);
+					@include x-rem(top, 5px);
+				}
+				&::before {
+					content: '';
+					@include x-rem(width, 15px);
+					@include x-rem(height, 15px);
+					@include x-rem(left, 7px);
+					position: absolute;
+					opacity: 0;
+					visibility: hidden;
+					transform: scale(0.5);
+					transition: all 0.3s ease-in-out;
+					background-image: url(../img/icons/check.svg);
+					background-size: cover;
+				}
+			}
 			&:checked {
 				& + label {
 					background-color: $scroll;
@@ -4222,30 +4357,7 @@ a {
 			position: relative;
 			cursor: pointer;
 			transition: background-color 0.3s ease-in-out;
-			&::after {
-				content: '';
-				@include x-rem(width, 18px);
-				@include x-rem(height, 18px);
-				border-radius: 100%;
-				border: 1px solid $hover;
-				position: absolute;
-				@include x-rem(left, 5px);
-				@include x-rem(top, 5px);
-			}
-			&::before {
-				content: '';
-				@include x-rem(width, 10px);
-				@include x-rem(height, 10px);
-				border-radius: 100%;
-				background-color: $hover;
-				position: absolute;
-				@include x-rem(left, 9px);
-				@include x-rem(top, 9px);
-				opacity: 0;
-				visibility: hidden;
-				transform: scale(0.5);
-				transition: all 0.3s ease-in-out;
-			}
+				
 			span {
 				font-family: $Book;
 				@include x-rem(font-size, 19px);
