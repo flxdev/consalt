@@ -4612,7 +4612,7 @@ a {
 	}
 	ul {
 		@include x-rem(padding, 7px 0);
-		overflow: hidden;
+		overflow: auto;
 		border-radius: 0;
 		li {
 			label {
@@ -4629,6 +4629,7 @@ a {
 					opacity: 0;
 					top: 0;
 					visibility: hidden;
+					width: 0!important;
 				}
 				span {
 					font-family: $Book;
@@ -4637,6 +4638,9 @@ a {
 				}
 				&:hover {
 					background-color: $hover;
+				}
+				&.disabled {
+					display: none;
 				}
 			}
 			&.selected {

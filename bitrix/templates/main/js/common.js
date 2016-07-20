@@ -1454,11 +1454,11 @@ $(document).ready(function () {
 				placeholder: place,
 				onClose: function () {
 				$('.ms-choice').removeClass('is-active');
-					if($('.ms-drop').find('li.selected').length) {
-						$('.ms-drop').parents('.field__body').removeClass('has-error');
-						$('.ms-drop').parents('.field__body').addClass('has-success');
+					if($('.validation').find('li.selected').length) {
+						$('.validation').parents('.field__body').removeClass('has-error');
+						$('.validation').parents('.field__body').addClass('has-success');
 					}else {
-						$('.ms-drop').parents('.field__body').addClass('has-error').removeClass('has-success');
+						$('.validation').parents('.field__body').addClass('has-error').removeClass('has-success');
 					}
 				}
 			});
