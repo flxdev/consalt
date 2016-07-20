@@ -3986,7 +3986,7 @@ a {
 		color: $grey;
 		@include x-rem(margin-bottom, 20px);
 		position: relative;
-		.popup__img {
+		.popup__img, a {
 			color: $blue;
 		}
 	}
