@@ -919,15 +919,21 @@ $(document).ready(function () {
 				} else {
 					$('.menu-left').addClass('hidden');
 				}
-				if(index !== 4) {
+				if(index === 2 || index === 4) {
+					$('.scroll').removeClass('hide');
+				} else {
 					$('.scroll').addClass('hide');
+				}
+				if(index !== 4) {
 					$('.footer').removeClass('show');
 				} else {
-					$('.scroll').removeClass('hide');
 					$('.footer').addClass('show');
 				}
 			},
 			onLeave: function(index, newIndex, direction){
+
+				console.log(newIndex)
+
 				if(direction === 'down') {
 					$('.section').removeClass('up');
 					$('.section.active').next().addClass('down').siblings().removeClass('down');
@@ -940,11 +946,17 @@ $(document).ready(function () {
 				} else {
 					$('.menu-left').addClass('hidden');
 				}
-				if(newIndex !== 4) {
+
+				if(newIndex === 2 || newIndex === 4) {
+					$('.scroll').removeClass('hide');
+				} else {
 					$('.scroll').addClass('hide');
+				}
+
+
+				if(newIndex !== 4) {
 					$('.footer').removeClass('show');
 				} else {
-					$('.scroll').removeClass('hide');
 					$('.footer').addClass('show');
 				}
 			}

@@ -712,17 +712,19 @@ a {
 }
 .nav-inner {
 	position: absolute;
-	left: 23%;
+	left: 24%;
 	z-index: 1;
 	@include x-rem(bottom, 63px);
 	right: 5%;
 	max-width: 50%;
 	transition: left 0.3s ease-in-out;
 	@include r(1365) {
-		left: 15%;
+		left: 14%;
+		@include x-rem(bottom, 20px);
 	}
 	@include r(1279) {
-		left: 9%;
+		left: 7%;
+		max-width: 80%;
 	}
 	@include r(980) {
 		position: relative;
@@ -737,6 +739,9 @@ a {
 		color: $grey;
 		transition: color 0.3s ease-in-out;
 		padding: 3% 0;
+		@include r(1279) {
+			padding: 2% 0;
+		}
 		@include r(980) {
 			padding: 1% 0;
 		}
@@ -876,6 +881,9 @@ a {
 	@include r(980) {
 		display: none;
 	}
+}
+#fp-nav {
+	z-index: 14;
 }
 #fp-nav.left {
 	left: 40.15%;
@@ -1033,6 +1041,14 @@ a {
 }
 .section {
 	position: absolute;
+	&:nth-of-type(2) {
+		.solutions {
+			margin-top: 0;
+		}
+		.head__section {
+			margin-top: 0;
+		}
+	}
 	@include r(980) {
 		position: relative;
 	}
@@ -1837,6 +1853,12 @@ a {
 		float: left;
 		height: 100%;
 		opacity: 0;
+		@include r(1150) {
+			width: 54.125%;
+		}
+		@include r(1024) {
+			width: 38.125%;
+		}
 		@include r(980) {
 			display: none;
 		}
@@ -1852,6 +1874,12 @@ a {
 		@include r(1365) {
 			@include x-rem(padding-top, 41px);
 			// padding-left: 2%;
+		}
+		@include r(1150) {
+			width: 45.875%;
+		}
+		@include r(1024) {
+			width: 61.875%;
 		}
 		.nav {
 			margin-left: 0;
@@ -1914,6 +1942,7 @@ a {
 		bottom: 9%;
 		left: 10%;
 		right: 9.375%;
+		z-index:15;
 		@include r(1365) {
 			left: 5%;
 			bottom: 4%;
@@ -2483,7 +2512,7 @@ a {
 		}
 		.title__img {
 			@include x-rem(width, 60px);
-			@include x-rem(margin-bottom, 5px);
+			@include x-rem(margin-bottom, 15px);
 			img {
 				max-width: 100%;
 			}
