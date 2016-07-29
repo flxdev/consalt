@@ -714,7 +714,7 @@ a {
 	position: absolute;
 	left: 24%;
 	z-index: 1;
-	@include x-rem(bottom, 63px);
+	@include x-rem(bottom, 30px);
 	right: 5%;
 	max-width: 50%;
 	transition: left 0.3s ease-in-out;
@@ -2537,6 +2537,7 @@ a {
 			height: auto;
 			&::after {
 				@include x-rem(bottom, -25px);
+				top: auto;
 			}
 			img {
 				position: relative;
