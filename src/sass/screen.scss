@@ -4793,3 +4793,46 @@ a {
 		}
 	}
 }
+.not__found-page {
+	text-align: center;
+	max-width: 530px;
+	margin: 0 auto;
+	position: relative;
+	@include x-rem(left, -40px);
+	@include r(980) {
+		left: 0;
+	}
+	.not__found-numbers {
+		@include r(480) {
+			@include x-rem(margin-bottom, 50px);
+		}
+		span {
+			font-family: $Demi;
+			color: #cde8fd;
+			display: inline-block;
+			vertical-align: middle;
+			@include r(480) {
+				display: block;
+			}
+			&.num {
+				@include x-rem(font-size, 200px);
+				letter-spacing: 10px;
+				@include r(480) {
+					@include x-rem(line-height, 200px);
+				}
+			}
+			&.text {
+				@include x-rem(font-size, 15px);
+				text-transform: uppercase;
+				letter-spacing: 2px;
+				@include x-rem(margin-top, 65px);
+				@include r(480) {
+					@include x-rem(margin-top, 0px);
+				}
+			}
+		}
+	}
+	.lead {
+		display: inline-block;
+	}
+}
