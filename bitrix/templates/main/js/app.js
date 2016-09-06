@@ -101,7 +101,7 @@ $(document).ready(function () {
 			if(!$(this).hasClass('mobile')) {
 				$.fn.fullpage.moveTo(1);
 			} else {
-				$('html, body').animate({
+				$('.section-scroll').animate({
 					scrollTop: 0
 				}, 850);
 			};

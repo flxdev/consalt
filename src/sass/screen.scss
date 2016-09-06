@@ -68,7 +68,61 @@ body {
 }
 .viewport {
 	min-height: 100%;
+	
 }
+body {
+	@include r(980) {
+		overflow: hidden;
+		&.index {
+			.viewport {
+				overflow: auto;
+				-webkit-overflow-scrolling: touch;
+				width: 100%;
+				position: relative;
+				height: 100%;
+			}
+			.out {
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%!important;
+				overflow: hidden;
+				.section-scroll {
+					overflow-x: hidden;
+					overflow-y: scroll;
+					position: relative;
+					width: 100%;
+					height: 100%;
+				}
+			}
+		}
+		.viewport {
+			overflow: auto;
+			-webkit-overflow-scrolling: touch;
+			width: 100%;
+			position: relative;
+			height: 100%;
+		}
+		.v-out {
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%!important;
+			overflow: hidden;
+			.section-scroll {
+				overflow-x: hidden;
+				overflow-y: scroll;
+				position: relative;
+				width: 100%;
+				height: 100%;
+			}
+			.viewport-left {
+				height: auto;
+			}
+		}
+	}
+}
+	
 strong {
 	font-family: $Medium;
 	font-weight: normal;
@@ -1940,17 +1994,18 @@ a {
 	.social {
 		position: absolute;
 		bottom: 9%;
-		left: 10%;
+		left: 11%;
 		right: 9.375%;
 		z-index:15;
 		@include r(1365) {
-			left: 5%;
+			left: 11%;
 			bottom: 4%;
 		}
 		@include r(980) {
 			bottom: 4%;
+			left: 5%;
 			.social-item {
-				margin-left: 5%;
+				margin-left: 3%;
 			}
 		}
 	}	
