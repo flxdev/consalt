@@ -30,7 +30,7 @@ var path = {
         html: 'src/*.html',
         js: 'src/js/**/*.js',
         css: 'src/css/*.*',
-        sass: 'src/sass/screen.scss',
+        sass: 'src/sass/*.scss',
         img: 'src/img/**/*.*',
         svg: 'src/svg/*.svg',
         icons: 'src/img/icons/*.png',

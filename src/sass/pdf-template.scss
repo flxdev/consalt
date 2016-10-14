@@ -1,0 +1,79 @@
+@import "lib/mixin";
+@import "lib/variables";
+.pdf-template {
+	max-width: 800px;
+	margin: auto
+}
+.form-container {
+	width: 100%;
+}
+.form-name {
+	font-family: $Light;
+	@include x-rem(font-size, 36px);
+	color: $grey;
+	@include x-rem(margin-bottom, 20px);
+}
+.form-name__sub {
+	font-family: $Medium;
+	@include x-rem(font-size, 26px);
+	color: $grey;
+	@include x-rem(margin-bottom, 20px);
+}
+hr {
+	height: 1px;
+	background-color: #ccc;
+	outline: 0;
+	border: 0;
+	@include x-rem(margin, 0 0 40px 0);
+}
+.form-row {
+	@include x-rem(margin, 0 0 40px 0);
+	display: inline-block;
+	width: 100%;
+	hr {
+		@include x-rem(margin, 0 0 20px 0);
+	}
+	.form-item {
+		@include x-rem(margin-bottom, 20px);
+		.form-item__head {
+			font-family: $Medium;
+			@include x-rem(font-size, 19px);
+			color: $grey;
+			@include x-rem(margin-bottom, 5px);
+		}
+		.form-item_value {
+			@include clearfix;
+			font-size: 0;
+			img {
+				max-width: 200px;
+			}
+			.values {
+				width: 100%;
+				background-color: $leftBar;
+				font-family: $Book;
+				@include x-rem(font-size, 19px);
+				color: $grey;
+				@include x-rem(padding, 11px 12px 12px);
+				@include x-rem(min-height, 46px);
+				&:not(:first-of-type) {
+					@include x-rem(margin-top, 10px)
+				}
+			}
+			&.form-item_value-double {
+				.values {
+					width: 45%;
+					display: inline-block;
+					vertical-align: middle;
+				}
+			}
+			.separator {
+				display: inline-block;
+				vertical-align: middle;
+				text-align: center;
+				width: 10%;
+				@include x-rem(font-size, 19px);
+				color: $grey;
+			}
+		}
+	}
+}
